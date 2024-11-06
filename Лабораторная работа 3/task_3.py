@@ -1,17 +1,16 @@
 # TODO  Напишите функцию count_letters
 def count_letters(text):
-    letters_count = []
-    for letter in text:
+    letters_dict = {}
+    for letter in text.lower():
         if letter.isalpha():
-            letters_count.append(letter.lower())
-    sum_letters = list(set(letters_count))
-    count_dict = {}
-    for letters in text:
-        count_dict[letters] = letters_count.count(letters)
-    return count_dict
+            if letter in letters_dict:
+                letters_dict[letter] += 1
+            else:
+                letters_dict[letter] = 1
+    return letters_dict
 # TODO Напишите функцию calculate_frequency
 def calculate_frequency(dict_):
-    number_of_letters = len(dict_)
+    number_of_letters = sum(dict_.values())
     for k, v in dict_.items():
         dict_[k] = round(v/number_of_letters, 2)
     return dict_
